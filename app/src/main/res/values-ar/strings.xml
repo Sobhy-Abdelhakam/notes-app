@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ملاحظاتي</string>
+    <string name="welcome_back">أهلا مجددًا</string>
+    <string name="email">الإيميل</string>
+    <string name="password">الرقم السري</string>
+    <string name="confirm_password">تأكيد الرقم السري</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="create_account">إنشاء حساب</string>
+    <string name="let_s_get_started">مرحبا بك</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="sign_up">تسجيل اشتراك</string>
+    <string name="already_have_an_account">هل لديك حساب؟</string>
+    <string name="notes">الملاحظات</string>
+    <string name="note_title">العنوان</string>
+    <string name="this_is_note_content_pla_pla_pla_this_is_long_text_to_test_the_widget_if_it_made_successfully_ot_not">هذا هو نص طويل للاختبار، بلا بلا بلا، هذا هو نص طويل للاختبار، بلا بلا بلا، هذا هو نص طويل للاختبار، بلا بلا بلا </string>
+    <string name="_20_march">20 مارس</string>
+    <string name="add_new_note">إضافة ملاحظة</string>
+    <string name="title">العنوان</string>
+    <string name="content">المحتوى</string>
+    <string name="delete_the_note">حذف الملاحظة</string>
+    <string name="email_should_verified">يجب التحقق من البريد الإلكتروني</string>
+    <string name="email_error">اكتب بريدًا إلكترونيًا صحيحًا مثل: user@example.com</string>
+    <string name="password_error">يجب أن تكون كلمة المرور أكثر من 8</string>
+    <string name="created_account_successfully">تم إنشاء الحساب بنجاح</string>
+    <string name="not_same_password">ليست نفس كلمة المرور</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="edit_your_note">تعديل ملاحظتك</string>
+    <string name="title_is_required">العنوان مطلوب</string>
+    <string name="note_added">تمت إضافة الملاحظة بنجاح</string>
+    <string name="note_added_failed">فشل أثناء إضافة الملاحظة</string>
+    <string name="note_deleted_successfully">تم حذف الملاحظة بنجاح</string>
+    <string name="note_deleted_failed">فشل أثناء حذف الملاحظة</string>
+    <string name="forgot_password">هل نسيت كلمة السر؟</string>
+    <string name="reset_password">إرسال الإيميل</string>
+    <string name="reset_your_password">إعادة تعيين كلمة المرور</string>
+    <string name="email_sent">تم إرسال الإيميل</string>
+</resources>

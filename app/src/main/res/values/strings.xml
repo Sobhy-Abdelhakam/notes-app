@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">My Notes</string>
+    <string name="welcome_back">welcome back</string>
+    <string name="email">Email</string>
+    <string name="password">password</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="create_account">create account</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="notes">notes</string>
+    <string name="note_title">note title</string>
+    <string name="this_is_note_content_pla_pla_pla_this_is_long_text_to_test_the_widget_if_it_made_successfully_ot_not">this is note content pla pla pla, this is long text to test the widget if it made successfully ot not</string>
+    <string name="_20_march">20 march</string>
+    <string name="add_new_note">Add New Note</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="delete_the_note">Delete the note</string>
+    <string name="email_should_verified">email should be verified</string>
+    <string name="email_error">write correct email like: user@example.com</string>
+    <string name="password_error">password should be more than 8</string>
+    <string name="created_account_successfully">Created account successfully</string>
+    <string name="not_same_password">not the same password</string>
+    <string name="logout">Logout</string>
+    <string name="edit_your_note">Edit your note</string>
+    <string name="title_is_required">title is required</string>
+    <string name="note_added">note added successfully</string>
+    <string name="note_added_failed">Failed while adding note</string>
+    <string name="note_deleted_successfully">Note deleted successfully</string>
+    <string name="note_deleted_failed">failed while deleting the note</string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_your_password">Reset Your Password</string>
+    <string name="email_sent">Email Sent</string>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="@dimen/_6sdp"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/my_primary">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_8sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_note_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/note_title"
+            android:textSize="@dimen/_18ssp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/item_note_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/this_is_note_content_pla_pla_pla_this_is_long_text_to_test_the_widget_if_it_made_successfully_ot_not"
+            android:textSize="@dimen/_16sdp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginVertical="@dimen/_6sdp"/>
+        <TextView
+            android:id="@+id/item_note_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_20_march"
+            android:textSize="@dimen/_12sdp"
+            android:layout_gravity="end"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

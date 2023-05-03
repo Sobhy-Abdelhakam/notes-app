@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/my_primary"
+    android:padding="@dimen/_14sdp"
+    tools:context="com.sobhy.notesapplication.NoteDetailsActivity">
+
+    <RelativeLayout
+        android:id="@+id/details_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_note"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_26ssp"/>
+
+        <ImageButton
+            android:id="@+id/details_btn_save"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:src="@drawable/baseline_check_24"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/note_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/note_details_background"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_14sdp"
+        android:layout_below="@+id/details_app_bar"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/details_et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:padding="@dimen/_8sdp" />
+        <EditText
+            android:id="@+id/details_et_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/content"
+            android:textSize="@dimen/_18ssp"
+            android:textColor="@color/black"
+            android:minLines="12"
+            android:gravity="top"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:padding="@dimen/_8sdp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/note_tv_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_the_note"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="#FF0000"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+</RelativeLayout>
