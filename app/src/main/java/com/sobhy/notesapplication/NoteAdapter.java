@@ -1,12 +1,15 @@
 package com.sobhy.notesapplication;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -16,8 +19,11 @@ import java.text.SimpleDateFormat;
 
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.NoteViewHolder> {
 
-    public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options) {
+    private final ClickListener clickListener;
+
+    public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options, ClickListener clickListener) {
         super(options);
+        this.clickListener= clickListener;
     }
 
     @Override
@@ -28,12 +34,16 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
         holder.noteTime.setText(time);
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent= new Intent(v.getContext(), NoteDetailsActivity.class);
-            intent.putExtra("title", model.getTitle());
-            intent.putExtra("content", model.getContent());
-            String noteId= this.getSnapshots().getSnapshot(position).getId();
-            intent.putExtra("noteId", noteId);
-            v.getContext().startActivity(intent);
+            String noteId = this.getSnapshots().getSnapshot(position).getId();
+            String title = model.getTitle();
+            String content = model.getContent();
+            if (clickListener != null){
+                Log.d("click listener", "onBindViewHolder: clicked");
+                clickListener.onPositionClicked(noteId, title, content);
+            }
+
+
+//            Navigation.findNavController(v).navigate(R.id.action_notesFragment_to_noteDetailsFragment);
         });
     }
 

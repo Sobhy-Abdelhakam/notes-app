@@ -1,21 +1,29 @@
-package com.sobhy.notesapplication;
+package com.sobhy.notesapplication.fragments;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
+
 import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-
-public class LoginActivity extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseUser;
+import com.sobhy.notesapplication.R;
+public class LoginFragment extends Fragment {
     TextInputEditText emailEditText, passwordEditText;
     AppCompatButton loginBtn;
     TextView forgotPassword, createAccountTv;
@@ -24,30 +32,47 @@ public class LoginActivity extends AppCompatActivity {
     Dialog dialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        emailEditText = view.findViewById(R.id.login_textInputEditText_email);
+        passwordEditText = view.findViewById(R.id.login_textInputEditText_password);
+        loginBtn= view.findViewById(R.id.login_btn_login);
+        forgotPassword = view.findViewById(R.id.login_tv_forgot_password);
+        createAccountTv = view.findViewById(R.id.login_tv_createaccount);
+        progressBar = view.findViewById(R.id.login_progress_bar);
+        return view;
+    }
 
-        emailEditText = findViewById(R.id.login_textInputEditText_email);
-        emailEditText.setOnFocusChangeListener((view, hasFocus) -> {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            NavOptions navOptions = new NavOptions.Builder()
+                    .setPopUpTo(R.id.loginFragment, true)
+                    .build();
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_notesFragment, savedInstanceState, navOptions);
+        }
+
+        emailEditText.setOnFocusChangeListener((view1, hasFocus) -> {
             if (!hasFocus ){
                 if (!Patterns.EMAIL_ADDRESS.matcher(emailEditText.getText().toString()).matches()){
                     emailEditText.setError(getString(R.string.email_error));
                 }
             }
         });
-        passwordEditText = findViewById(R.id.login_textInputEditText_password);
-        loginBtn= findViewById(R.id.login_btn_login);
-        forgotPassword = findViewById(R.id.login_tv_forgot_password);
-        createAccountTv = findViewById(R.id.login_tv_createaccount);
-        progressBar = findViewById(R.id.login_progress_bar);
         forgotPassword.setOnClickListener(v -> showResetDialog());
-        createAccountTv.setOnClickListener(v -> startActivity(new Intent(getBaseContext(), CreateAccountActivity.class)));
+        createAccountTv.setOnClickListener(v ->
+                Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_createAccountFragment)
+
+        );
         loginBtn.setOnClickListener(v -> loginUser());
     }
 
     private void showResetDialog() {
-        dialog = new Dialog(this);
+        dialog = new Dialog(requireContext());
         dialog.setContentView(R.layout.custom_dialog_layout);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         EditText emailReset = dialog.findViewById(R.id.dialog_et_email);
@@ -70,9 +95,9 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
             dialog.dismiss();
             if (task.isSuccessful()) {
-                Toast.makeText(this, R.string.email_sent, Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), R.string.email_sent, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -94,13 +119,12 @@ public class LoginActivity extends AppCompatActivity {
             changeInProgress(false);
             if (task.isSuccessful()) {
                 if (firebaseAuth.getCurrentUser().isEmailVerified()) {
-                    startActivity(new Intent(getBaseContext(), MainActivity.class));
-                    finish();
+                    Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_notesFragment);
                 } else {
-                    Toast.makeText(this, R.string.email_should_verified, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), R.string.email_should_verified, Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
